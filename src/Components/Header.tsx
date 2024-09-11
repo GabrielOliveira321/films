@@ -34,10 +34,6 @@ const Header = () => {
         }
     }
 
-    function fechar(text: boolean) {
-        setSearchMovies(text);
-    }
-
     return (
         <HeaderConfi>
                 <Title>RATER</Title>
