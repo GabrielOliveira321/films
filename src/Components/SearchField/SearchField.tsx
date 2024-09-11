@@ -7,17 +7,16 @@ import { IoStarSharp } from "react-icons/io5";
 const SearchField = () => {
 
     const { completeSearch, searchFilms } = useStore();
+    
+    let userSearch = completeSearch.filter((e) => { return e.original_title.toLowerCase().includes(searchFilms.toLowerCase()) })  
     let completeSearchFilter;
-    const igual = completeSearch.map((movie) => movie.title);
 
-    if(searchFilms === "") {
-        
+    if(userSearch.length == 0 || searchFilms === "") {
         completeSearchFilter = (  
             <SearchNone>
                 <h1>Nenhum filmes pesquisado...</h1>
             </SearchNone>)
-
-    } else {
+    } else if (userSearch) {
         completeSearchFilter = completeSearch.map((search) => (
             <SearchArticle key={search.id}>
                 <img
@@ -45,3 +44,10 @@ const SearchField = () => {
 }
 
 export default SearchField;
+
+
+
+{/* <SearchFilter> */}
+{/* {completeSearchFilter} */}
+{/* </SearchFilter> */}
+// const igual = completeSearch.map((movie) => movie.title);

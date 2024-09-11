@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import useStore from "./UserStorage/index";
 import SearchField from "./SearchField/SearchField";
-import { Search } from "lucide-react";
 import CategoriesMovies from "./CategoriesMovies";
-import { Title } from "chart.js";
-import { HeaderConfi, SerachButton, InputSerach, OptionsFilter } from "./Styleds/styledHeader";
+import { Search, HeaderConfi, SerachButton, InputSerach, OptionsFilter, Title } from "./Styleds/styledHeader";
 
 const Header = () => {
 
@@ -26,17 +24,31 @@ const Header = () => {
         setSearchMovies(true);
     }
 
+    function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+        if(event.key === 'Enter') {
+            setSearchFilms(searchFilms);
+            setSearchMovies(true);
+            setCompleteSearch(filteredItems);
+        } else {
+            return;
+        }
+    }
+
+    function fechar(text: boolean) {
+        setSearchMovies(text);
+    }
+
     return (
         <HeaderConfi>
-                {/* <Title>RATER</Title> */}
+                <Title>RATER</Title>
                 
                 <Search>
-                    <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e) => setSearchFilms(e.target.value)}></InputSerach>
+                    <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e) => setSearchFilms(e.target.value)} onKeyPress={handleKeyPress}></InputSerach>
                     <OptionsFilter onClick={() => setMenuFilter(!menuFilter)}>
                         <img src="lucide/Vector.jpg" alt="menu"/>
 
                         {searchMovies ? <SearchField /> : <span></span>}
-                        {menuFilter === true && <CategoriesMovies  />}
+                        {/* {menuFilter === true && <CategoriesMovies  />} */}
                     </OptionsFilter>
                 </Search>
         </HeaderConfi>
