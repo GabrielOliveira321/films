@@ -36,7 +36,7 @@ const Header = () => {
 
     return (
         <HeaderConfi>
-                <Title>RATER</Title>
+                <Title onClick={() => setSearchMovies(!searchMovies)}>RATER</Title>
                 
                 <Search>
                     <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e) => setSearchFilms(e.target.value)} onKeyPress={handleKeyPress}></InputSerach>

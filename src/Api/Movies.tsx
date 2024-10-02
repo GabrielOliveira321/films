@@ -25,7 +25,7 @@ export const fetchLatest = async (): Promise<LaststMovies[]> => {
     params: {
       api_key: "a7fb42de14992ada410e9bb2ed8678f1",
       language: "pt-BR",
-      page: 4,
+      page: 2,
     }
   })
   

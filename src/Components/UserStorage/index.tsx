@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Movies, LaststMovies, Celebrity } from '../../Interfaces/interfaces';
+import { Movies, LaststMovies, Celebrity, Person } from '../../Interfaces/interfaces';
 
 interface StoreState {
   films: Movies[];
@@ -8,7 +8,7 @@ interface StoreState {
   latest: LaststMovies[];
   searchFilms: string;
   completeSearch: Movies[];
-  person: Celebrity[];
+  person: Person[];
 
   setFilms: (films: Movies[]) => void;
   setCelebrities: (celebrities: Celebrity[]) => void;

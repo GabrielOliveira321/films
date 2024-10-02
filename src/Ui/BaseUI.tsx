@@ -156,6 +156,19 @@ export const ThemeText = styled.div`
   }
 `;
 
+export const BaseUILog = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 24px;
+  gap: 12px;
+  border-radius: 24px;
+  background: #121212;
+  overflow: hidden;
+  margin: 20px auto;
+`
+
 interface BaseUI {
     children: ReactNode;
 }

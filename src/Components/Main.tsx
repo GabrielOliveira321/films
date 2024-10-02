@@ -1,19 +1,21 @@
 import Celebrities from "./Celebrites/Celebrities";
-import { Movies, LaststMovies, Celebrity } from "../Interfaces/interfaces";
+import { Movies, LaststMovies, Celebrity, Person } from "../Interfaces/interfaces";
 import RecommendedMovies from "./Films/RecommendedMovies";
 import LastRecommendMovies from "./Films/LastRecommendMovies";
 import styled from "styled-components";
 import useStore from "./UserStorage";
 import { useEffect, useState } from "react";
-import CelebrityPerson from "../Pages/Celebrity/Celebrity";
 import { fetchCelebrities } from "../Api/Celebrities";
 import { fetchFilms, fetchLatest } from "../Api/Movies";
+import CelebrityPerson from "../Pages/Celebrity/Celebrity";
 
 
 export interface MainProps {
     films: Movies[];
+}
+
+export interface Celebridades {
     celebrities: Celebrity[];
-    latest: LaststMovies[];
 }
 
 const MainStyled = styled.main `
@@ -27,7 +29,7 @@ const MainStyled = styled.main `
 
 const Main = () => {
     
-    const { films, celebrities, latest, setFilms, setCelebrities, setLatest } = useStore();
+    const { films, celebrities, latest, setFilms, setCelebrities, setLatest, person } = useStore();
     const [openActor, setOpenActor]  = useState<boolean>(false);
 
     useEffect(() => {
@@ -44,7 +46,7 @@ const Main = () => {
         <MainStyled>
             <button onClick={() => setOpenActor(!openActor)}></button>
            {
-                openActor ? <CelebrityPerson /> 
+                openActor ? <CelebrityPerson person={person} /> 
                     :
                 <>
                     <LastRecommendMovies films={films} />

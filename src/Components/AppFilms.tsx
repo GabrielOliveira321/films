@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Main from "./Main";
-import { FilmsComponent, Footer, Copiringth } from "./Styleds/appFilms";
+import { FilmsComponent, Footer, Copiringth } from "./Styleds/styledAppFilms";
 
 const AppFilms = () => {
 
