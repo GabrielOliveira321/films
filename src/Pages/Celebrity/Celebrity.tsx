@@ -1,5 +1,3 @@
-import React, { useRef } from "react";
-import useStore from "../../Components/UserStorage/index";
 import { Person } from "../../Interfaces/interfaces";
 import { CelebrityArticle, CelebrityIMG, CelebrityId } from "../../Components/Styleds/styledCelebrity";
 
@@ -13,6 +11,8 @@ const CelebrityPerson = ({person}: Pessoa) => {
 
     return (
         <div>
+          <h1 style={{color: 'white'}}>Ainda estou desenvolvendo as rotas para receber as celebridades e serem apenas uma pagina delas com as informações pessoais delas</h1>
+
             {
                 person.map((item) => (
                     <CelebrityArticle key={item.id}>

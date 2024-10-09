@@ -8,7 +8,7 @@ const ReactApp = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<AppFilms />} />
-                {/* <Route path="/celebrity" element={<Celebrity />} /> */}
+                {/* <Route path="/celebrity" element={<Celebrity person={[]} />} /> */}
             </Routes>
         </BrowserRouter>
     );

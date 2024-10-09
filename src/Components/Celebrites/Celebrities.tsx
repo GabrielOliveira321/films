@@ -19,7 +19,7 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
   }
 
   let celebriteLoading;
-
+  
   if(celebrities.length > 0) {
     celebriteLoading = (
     <BaseUI>
@@ -50,7 +50,10 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
   };
 
   return (
-    celebriteLoading
+
+    <>
+      {celebriteLoading}
+    </>
   )
 }
 

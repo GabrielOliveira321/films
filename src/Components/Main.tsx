@@ -1,13 +1,14 @@
 import Celebrities from "./Celebrites/Celebrities";
-import { Movies, LaststMovies, Celebrity, Person } from "../Interfaces/interfaces";
+import { Movies, Celebrity } from "../Interfaces/interfaces";
 import RecommendedMovies from "./Films/RecommendedMovies";
 import LastRecommendMovies from "./Films/LastRecommendMovies";
 import styled from "styled-components";
 import useStore from "./UserStorage";
 import { useEffect, useState } from "react";
-import { fetchCelebrities } from "../Api/Celebrities";
-import { fetchFilms, fetchLatest } from "../Api/Movies";
+import { fetchCelebritiesTEST } from "../Api/ApiCelebrities";
+import { fetchFilms, fetchLatest } from "../Api/ApiMovies";
 import CelebrityPerson from "../Pages/Celebrity/Celebrity";
+import { fetchMovies } from "../Api/ApiPesquisarFILMES";
 
 
 export interface MainProps {
@@ -31,17 +32,16 @@ const Main = () => {
     
     const { films, celebrities, latest, setFilms, setCelebrities, setLatest, person } = useStore();
     const [openActor, setOpenActor]  = useState<boolean>(false);
-
+    
     useEffect(() => {
+        // const getFilms = async () => { const filmData = await fetchMovies(); setFilms(filmData) };
         const getFilms = async () => { const filmData = await fetchFilms(); setFilms(filmData) };
-        const getCelebrities = async () => { const celebritiesData = await fetchCelebrities(); setCelebrities(celebritiesData)};
+        const getCelebrities = async () => { const celebritiesData = await fetchCelebritiesTEST(); setCelebrities(celebritiesData)};
         const getLatest = async () => { const latestData = await fetchLatest(); setLatest(latestData) };
     
         getLatest(); getFilms(); getCelebrities();
     }, [setFilms, setCelebrities, setLatest]);
     
-
-
     return (
         <MainStyled>
             <button onClick={() => setOpenActor(!openActor)}></button>
@@ -53,7 +53,6 @@ const Main = () => {
                     <RecommendedMovies latest={latest} />
                     <Celebrities celebrities={celebrities}/>
                 </> 
-
            }
         </MainStyled>
     )
