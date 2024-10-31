@@ -17,6 +17,8 @@ export const Footer = styled.footer`
   box-sizing: border-box;
   align-items: center;
   display: flex;
+  // position: absolute;
+  top: 94%;
 `;
 
 export const Copiringth = styled.p`

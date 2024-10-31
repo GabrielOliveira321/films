@@ -3,6 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import useStore from "./UserStorage/index";
 import SearchField from "./SearchField/SearchField";
 import CategoriesMovies from "./CategoriesMovies";
+import { TiThMenuOutline } from "react-icons/ti";
 import { Search, HeaderConfi, SerachButton, InputSerach, OptionsFilter, Title } from "./Styleds/styledHeader";
 
 const Header = () => {
@@ -41,7 +42,7 @@ const Header = () => {
                 <Search>
                     <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e) => setSearchFilms(e.target.value)} onKeyPress={handleKeyPress}></InputSerach>
                     <OptionsFilter onClick={() => setMenuFilter(!menuFilter)}>
-                        <img src="lucide/Vector.jpg" alt="menu"/>
+                        <TiThMenuOutline style={{fontSize: "20px"}}/>
 
                         {searchMovies ? <SearchField /> : <span></span>}
                         {/* {menuFilter === true && <CategoriesMovies  />} */}

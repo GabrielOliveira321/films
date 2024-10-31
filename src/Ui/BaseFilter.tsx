@@ -16,8 +16,8 @@ export const SearchFilter = styled.div `
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 400px;
-    height: 270px;
+    width: 500px;
+    height: 370px;
     padding: 12px;
     gap: 12px;
     border-radius: 24px;
@@ -26,8 +26,8 @@ export const SearchFilter = styled.div `
     background: #232323;
     position: absolute;
     top: 100px;
-    left: 49%;
-    transform: translateX(-50%);
+    right: 41%;
+    transform: translateX(5%);
     overflow: auto;
 `
 export const SearchArticle = styled.article `

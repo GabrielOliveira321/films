@@ -27,7 +27,7 @@ const SearchField = () => {
     
                 <CamponentText>
                     <p>{search.release_date}</p>
-                    <h1>{search.title}</h1>
+                    <h1>{search.title.slice(0, 30)}</h1>
                 </CamponentText>
             </SearchArticle>
         ));
@@ -44,10 +44,3 @@ const SearchField = () => {
 }
 
 export default SearchField;
-
-
-
-{/* <SearchFilter> */}
-{/* {completeSearchFilter} */}
-{/* </SearchFilter> */}
-// const igual = completeSearch.map((movie) => movie.title);

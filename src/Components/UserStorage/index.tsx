@@ -8,8 +8,10 @@ interface StoreState {
   latest: LaststMovies[];
   searchFilms: string;
   completeSearch: Movies[];
+  
   person: Person[];
   fetchFilms: Movies[];
+  movie: Movies[];
 
   setFilms: (films: Movies[]) => void;
   setCelebrities: (celebrities: Celebrity[]) => void;
@@ -19,7 +21,7 @@ interface StoreState {
   setCompleteSearch: (completeSearch: Movies[]) => void; 
   setPerson: (person: Celebrity[]) => void;
   setFetchFilms: (Fetchfilms: Movies[]) => void;
-  
+  setMovie: (movie: Movies[]) => void;
 
   addToRecentlyViewed: (item: Movies) => void;
   addFilm: (film: Movies) => void;
@@ -29,6 +31,7 @@ interface StoreState {
   addCompleteSearch: (item: Movies) => void;
   addPerson: (person: Celebrity) => void;
   addFetchFilmes: (item: Movies) => void;
+  addMovie: (item: Movies) => void;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -40,6 +43,7 @@ const useStore = create<StoreState>((set) => ({
   completeSearch: [],
   person: [],
   fetchFilms: [],
+  movie: [],
 
 
   setFilms: (films) => set({ films }),
@@ -50,6 +54,7 @@ const useStore = create<StoreState>((set) => ({
   setCompleteSearch: (completeSearch) => set({ completeSearch }),
   setPerson: (person) => set({ person }),
   setFetchFilms: (fetchFilms) => set({ fetchFilms }),
+  setMovie: (movie) => set({movie}),
 
   addToRecentlyViewed: (item) =>
     set((state) => ({ recentlyViewed: [...state.recentlyViewed, item] })),
@@ -74,7 +79,10 @@ const useStore = create<StoreState>((set) => ({
 
   addFetchFilmes: (fetchFilms) => {
     set((state) => ({fetchFilms : [...state.fetchFilms,fetchFilms ] }))
-  }
+  },
+
+  addMovie: (movie) => 
+    set((state) => ({ movie: [...state.movie, movie] })),
 
 }));
 

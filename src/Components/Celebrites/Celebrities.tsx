@@ -5,7 +5,7 @@ import BaseUI, { Buttons, CardContainer, Article, Description, ItemMembers, Text
 import Loading from "../Loading";
 import { Celebridades } from "../Main";
 import { Celebrity } from "../../Interfaces/interfaces";
-
+import { useNavigate } from "react-router-dom";
 const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
 
   const {setPerson, person} = useStore();
@@ -14,10 +14,12 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
   const handlerScrollLeft = () => { if (scrollContainerRef.current) {scrollContainerRef.current.scrollBy({ left: -1000, behavior: "smooth" });}}
   const handlerScrollRight = () => { if (scrollContainerRef.current) { scrollContainerRef.current.scrollBy({ left: 1000, behavior: "smooth" });}}
 
-  const handlerCelebrities = (celebritie: Celebrity) => {
-    setPerson([celebritie])
-  }
+  const navigate = useNavigate();
 
+  const handlerCelebrities = (celebritie: Celebrity, name: string) => {
+    setPerson([celebritie])
+    navigate(`/Actor=/${name}`);
+  }
   let celebriteLoading;
   
   if(celebrities.length > 0) {
@@ -31,16 +33,19 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
         <ChevronRight size={24} color="#EEEEEE" onClick={handlerScrollRight} />
       </Buttons>
       <CardContainer ref={scrollContainerRef}>
-        {celebrities.map((celebritie) => (
-          <Article key={celebritie.id} onClick={() => handlerCelebrities(celebritie)}>
-            <ItemMembers>
-              <img src={`https://image.tmdb.org/t/p/original/${celebritie.profile_path}`} style={{height: ''}}  alt={celebritie.name} />
-              <TextDiv>
-                <ThemeText>
-                  <p>{celebritie.name}</p>
-                </ThemeText>
-              </TextDiv>
-            </ItemMembers>
+        {celebrities.map((celebritie, index) => (
+          <Article key={celebritie.id} onClick={() => handlerCelebrities(celebritie, celebritie.name)}>
+            {/* <Link to={`/Actor=/${celebritie.name}`}> */}
+
+              <ItemMembers>
+                {celebritie.profile_path === null ? <Loading/> : <img src={`https://image.tmdb.org/t/p/original/${celebritie.profile_path}`} alt={celebritie.name} />}
+                <TextDiv>
+                  <ThemeText>
+                    <p>{celebritie.name}</p>
+                  </ThemeText>
+                </TextDiv>
+              </ItemMembers>
+            {/* </Link> */}
           </Article>
         ))}
       </CardContainer>
@@ -58,3 +63,18 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
 }
 
 export default Celebrities;
+
+
+
+    // const personStore = localStorage.getItem("@celebrity");
+    // let saveCelebrity = personStore ? JSON.parse(personStore) : [];
+    // 
+    // const hasCelebrity = saveCelebrity.some((saveCelebrity: { id: number; }) => {
+      // return saveCelebrity.id === celebritie.id
+    // });
+// 
+    // if (!hasCelebrity) {
+      // saveCelebrity.push(celebritie);
+      // localStorage.setItem("@celebrity", JSON.stringify(saveCelebrity));
+      // setPerson([celebritie])
+    // }

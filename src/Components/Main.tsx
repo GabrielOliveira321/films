@@ -1,5 +1,5 @@
 import Celebrities from "./Celebrites/Celebrities";
-import { Movies, Celebrity } from "../Interfaces/interfaces";
+import { Celebrity, LaststMovies, Movies } from "../Interfaces/interfaces";
 import RecommendedMovies from "./Films/RecommendedMovies";
 import LastRecommendMovies from "./Films/LastRecommendMovies";
 import styled from "styled-components";
@@ -7,17 +7,19 @@ import useStore from "./UserStorage";
 import { useEffect, useState } from "react";
 import { fetchCelebritiesTEST } from "../Api/ApiCelebrities";
 import { fetchFilms, fetchLatest } from "../Api/ApiMovies";
-import CelebrityPerson from "../Pages/Celebrity/Celebrity";
-import { fetchMovies } from "../Api/ApiPesquisarFILMES";
-
-
-export interface MainProps {
-    films: Movies[];
-}
 
 export interface Celebridades {
     celebrities: Celebrity[];
 }
+
+export interface Recommended {
+    latest: LaststMovies[];
+}
+
+export interface LastMovies {
+    films: Movies[];
+  }
+  
 
 const MainStyled = styled.main `
     width: 100%;
@@ -32,9 +34,8 @@ const Main = () => {
     
     const { films, celebrities, latest, setFilms, setCelebrities, setLatest, person } = useStore();
     const [openActor, setOpenActor]  = useState<boolean>(false);
-    
+
     useEffect(() => {
-        // const getFilms = async () => { const filmData = await fetchMovies(); setFilms(filmData) };
         const getFilms = async () => { const filmData = await fetchFilms(); setFilms(filmData) };
         const getCelebrities = async () => { const celebritiesData = await fetchCelebritiesTEST(); setCelebrities(celebritiesData)};
         const getLatest = async () => { const latestData = await fetchLatest(); setLatest(latestData) };
@@ -44,16 +45,9 @@ const Main = () => {
     
     return (
         <MainStyled>
-            <button onClick={() => setOpenActor(!openActor)}></button>
-           {
-                openActor ? <CelebrityPerson person={person} /> 
-                    :
-                <>
-                    <LastRecommendMovies films={films} />
-                    <RecommendedMovies latest={latest} />
-                    <Celebrities celebrities={celebrities}/>
-                </> 
-           }
+                <LastRecommendMovies films={films} />
+                <RecommendedMovies latest={latest} />
+                <Celebrities celebrities={celebrities}/>
         </MainStyled>
     )
 }

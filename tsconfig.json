@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "src/Components/Styleds"  ]
+, "src/Components/Styleds", "trash/Celebrity.tsx"  ]
 }
