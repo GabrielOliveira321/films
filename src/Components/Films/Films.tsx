@@ -61,7 +61,7 @@ const FilmesList = ({ films, text }: LastMovies) => {
                                 <StarsDiv>
                                     <strong><IoStarSharp size={'24'} color="yellow" /><p>{film.vote_average.toFixed(1)}</p></strong>
                                 </StarsDiv>
-                                <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} alt={film.title} />
+                                <img src={`https://image.tmdb.org/t/p/original/${film.backdrop_path}`} alt={film.title} />
                                 
                                 <SpanTetx>
                                     <p>{film.title.slice(0, 25)}</p>

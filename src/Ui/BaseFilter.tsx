@@ -60,6 +60,12 @@ export const SearchArticle = styled.article `
         margin-bottom: 60px;
     }
 `
+
+export const CloseSection = styled.div `
+    background: white;
+
+`
+
 export const CamponentText = styled.div `
     display: contents;
     display: flex;

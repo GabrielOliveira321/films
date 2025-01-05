@@ -17,8 +17,13 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
   const navigate = useNavigate();
 
   const handlerCelebrities = (celebritie: Celebrity, name: string) => {
-    setPerson([celebritie])
     navigate(`/Actor=/${name}`);
+
+    const personStore = localStorage.getItem("@celebrity");
+    let saveCelebrity = personStore ? JSON.parse(personStore) : [];
+
+    saveCelebrity.push(celebritie);
+    localStorage.setItem("@celebrity", (saveCelebrity));
   }
   let celebriteLoading;
   
@@ -35,8 +40,6 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
       <CardContainer ref={scrollContainerRef}>
         {celebrities.map((celebritie, index) => (
           <Article key={celebritie.id} onClick={() => handlerCelebrities(celebritie, celebritie.name)}>
-            {/* <Link to={`/Actor=/${celebritie.name}`}> */}
-
               <ItemMembers>
                 {celebritie.profile_path === null ? <Loading/> : <img src={`https://image.tmdb.org/t/p/original/${celebritie.profile_path}`} alt={celebritie.name} />}
                 <TextDiv>
@@ -45,7 +48,6 @@ const Celebrities: React.FC<Celebridades> = ({celebrities}) => {
                   </ThemeText>
                 </TextDiv>
               </ItemMembers>
-            {/* </Link> */}
           </Article>
         ))}
       </CardContainer>

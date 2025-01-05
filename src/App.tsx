@@ -4,7 +4,6 @@ import ReactApp from "./routes/Routes";
 
 function App() {
   return (
-    // <AppFilms />
     <ReactApp />
   );
 }

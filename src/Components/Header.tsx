@@ -5,6 +5,7 @@ import SearchField from "./SearchField/SearchField";
 import CategoriesMovies from "./CategoriesMovies";
 import { TiThMenuOutline } from "react-icons/ti";
 import { Search, HeaderConfi, SerachButton, InputSerach, OptionsFilter, Title } from "./Styleds/styledHeader";
+import { CloseSection } from "../Ui/BaseFilter";
 
 const Header = () => {
 
@@ -37,12 +38,13 @@ const Header = () => {
 
     return (
         <HeaderConfi>
-                <Title onClick={() => setSearchMovies(!searchMovies)}>RATER</Title>
+                <Title onClick={() => setSearchMovies(false)}>RATER</Title>
                 
                 <Search>
-                    <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e) => setSearchFilms(e.target.value)} onKeyPress={handleKeyPress}></InputSerach>
+                    <SerachButton onClick={handlerSearch}><CiSearch /></SerachButton><InputSerach type="text" placeholder="pesquisar" value={searchFilms} onChange={(e: { target: { value: string; }; }) => setSearchFilms(e.target.value)} onKeyPress={handleKeyPress}></InputSerach>
                     <OptionsFilter onClick={() => setMenuFilter(!menuFilter)}>
                         <TiThMenuOutline style={{fontSize: "20px"}}/>
+                        {/* <CloseSection onClick={() => alert("IU")}>x</CloseSection> */}
 
                         {searchMovies ? <SearchField /> : <span></span>}
                         {/* {menuFilter === true && <CategoriesMovies  />} */}
@@ -53,3 +55,6 @@ const Header = () => {
 }
 
 export default Header;
+
+
+//   onClick={() => setSearchMovies(false)}

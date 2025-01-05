@@ -7,8 +7,15 @@ const CelebrityInformation = () => {
 
     const { person } = useStore();
 
-    useMemo(() => {}, [person]);
+    function handlersuamae () {
 
+        const sla = localStorage.getItem('@celebrity');
+        console.log(sla);
+    }
+
+    handlersuamae();
+    
+    
     return (
         <CelebrityDiv>
           <h1 style={{color: 'white'}}>Ainda estou desenvolvendo melhor a rota celebridades</h1>
