@@ -55,6 +55,3 @@ const Header = () => {
 }
 
 export default Header;
-
-
-//   onClick={() => setSearchMovies(false)}
